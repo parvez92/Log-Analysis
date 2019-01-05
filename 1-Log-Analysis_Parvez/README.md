@@ -29,6 +29,15 @@ create view Article_Views_Count as
     on articles.slug=result.article order by count desc;
 
 ```
+#### Author_Views_Count
+The following view is created to fetch how many views each Author has received.
+
+```
+create view Author_Views_Count as
+  select author,sum(count) as views from Article_Views_Count
+  group by author
+  order by views desc;
+```
 
 #### Per Day Success_Error_Count view: 
 The follwing view is created to fetch the Success and Error Count data for a particular day from the _Log_ table.
